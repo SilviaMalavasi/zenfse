@@ -1,0 +1,57 @@
+@use "../base/media-queries" as *;
+
+:root {
+  --padding-1: 3.25vw;
+  --padding-2: calc(var(--padding-1) * 2);
+  --padding-3: calc(var(--padding-1) * 3);
+  --padding-4: calc(var(--padding-1) * 4);
+
+  --root-font-size: calc((1vh + 4vw) * 0.217);
+
+  --font-1pt: calc((1vh + 4vw) * 0.217 * 0.054);
+
+  --font-14pt: calc(var(--font-1pt) * 14);
+  --font-18pt: calc(var(--font-1pt) * 18);
+  --font-20pt: calc(var(--font-1pt) * 20);
+  --font-22pt: calc(var(--font-1pt) * 22);
+  --font-36pt: calc(var(--font-1pt) * 36);
+  --font-40pt: calc(var(--font-1pt) * 40);
+  --font-48pt: calc(var(--font-1pt) * 48);
+  --font-50pt: calc(var(--font-1pt) * 50);
+  --font-60pt: calc(var(--font-1pt) * 60);
+  --font-80pt: calc(var(--font-1pt) * 80);
+
+  --rosso: #ff5858;
+
+  --easing: cubic-bezier(0, 0, 0.22, 1);
+  --border-radius: 1rem;
+}
+
+@include smalldesktopOnly {
+  :root {
+    --padding-1: 2.25vw;
+  }
+}
+
+@include mediaQuerySmartphonesOnly {
+  :root {
+    --padding-1: 2vw;
+
+    --root-font-size: 3vw;
+    --font-1pt: 3vw * 0.054;
+
+    --font-18pt: calc(var(--font-1pt) * 22);
+    --font-36pt: calc(var(--font-1pt) * 26);
+    --font-40pt: calc(var(--font-1pt) * 35);
+    --font-48pt: calc(var(--font-1pt) * 40);
+    --font-50pt: calc(var(--font-1pt) * 40);
+    --font-60pt: calc(var(--font-1pt) * 40);
+    --font-80pt: calc(var(--font-1pt) * 45);
+  }
+}
+
+@include mediaQueryTabletsOnly {
+  :root {
+    --root-font-size: 1vw;
+  }
+}

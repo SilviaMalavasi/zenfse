@@ -1,0 +1,8 @@
+@use "../../../src/css/base/mixins" as *;
+@use "../../../src/css/base/media-queries" as *;
+@import "../../../node_modules/swiper/swiper.min.css";
+@import "../../../node_modules/swiper/modules/navigation.min.css";
+@import "../../../node_modules/swiper/modules/pagination.min.css";
+
+.gallery.edit {
+}

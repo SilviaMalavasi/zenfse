@@ -1,0 +1,133 @@
+@use "../base/mixins.scss" as *;
+@use "../base/media-queries" as *;
+
+@keyframes tremolio {
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-2%);
+  }
+  45% {
+    transform: translateX(2%);
+  }
+  75% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.zenfse-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 3rem var(--padding-1) 0 var(--padding-1);
+  transition: all 0.5s var(--easing);
+  @include mediaQuerySmartphonesOnly {
+    padding: 2rem var(--padding-4) 0 var(--padding-4);
+  }
+  .wp-block-group > figure {
+    z-index: 500;
+    width: 4rem;
+    svg {
+      overflow: visible;
+      path {
+        fill: var(--wp--preset--color--base);
+        transition: all 0.4s var(--easing);
+        &.pallino {
+          transform-origin: left 10%;
+        }
+      }
+    }
+    @include hover {
+      svg {
+        path {
+          fill: var(--wp--preset--color--rosa-chiaro);
+          &.pallino {
+            transform: rotate(-25deg);
+          }
+          &.ia {
+            animation: tremolio 0.3s forwards;
+          }
+        }
+      }
+    }
+  }
+  &.menu-fondo-bianco {
+    #desktop-menu {
+      ul {
+        li {
+          background-color: var(--wp--preset--color--rosa-chiaro);
+          color: var(--wp--preset--color--base);
+          @include hover {
+            background-color: var(--wp--preset--color--blu);
+            color: var(--wp--preset--color--base);
+          }
+        }
+      }
+    }
+    #mobile-menu {
+      #menuToggle {
+        div {
+          background-color: var(--wp--preset--color--rosa-chiaro);
+        }
+      }
+    }
+    .wp-block-group > figure {
+      svg {
+        path {
+          fill: var(--wp--preset--color--rosa-chiaro);
+        }
+      }
+      @include hover {
+        svg {
+          path {
+            fill: var(--wp--preset--color--blu);
+          }
+        }
+      }
+    }
+  }
+  &.menu-fondo-rosa-scuro {
+    #desktop-menu {
+      ul {
+        li {
+          &:last-of-type {
+            color: var(--wp--preset--color--blu);
+            background-color: var(--wp--preset--color--base);
+          }
+          &.current-menu-item {
+            background-color: var(--wp--preset--color--blu);
+            color: var(--wp--preset--color--base);
+          }
+          @include hover {
+            background-color: var(--wp--preset--color--rosa-chiaro);
+            color: var(--wp--preset--color--base);
+          }
+        }
+      }
+    }
+  }
+  &.open-menu {
+    .wp-block-group > figure {
+      svg {
+        path {
+          fill: var(--wp--preset--color--base) !important;
+        }
+      }
+    }
+  }
+}
+
+.editor-styles-wrapper {
+  .zenfse-header {
+    position: relative;
+    width: calc(100% - var(--padding-1) * 2);
+    background-color: gainsboro;
+    margin-bottom: 2rem;
+  }
+}

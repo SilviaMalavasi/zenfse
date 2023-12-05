@@ -1,0 +1,10 @@
+@use "base/version";
+@use "base/media-queries";
+@use "base/variables";
+@use "base/mixins";
+@use "base/typography";
+
+@use "templates/index";
+
+@use "parts/header";
+@use "parts/footer";

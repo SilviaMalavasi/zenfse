@@ -1,0 +1,60 @@
+@use "../../../src/css/base/mixins" as *;
+@use "../../../src/css/base/media-queries" as *;
+@import "../../../node_modules/swiper/swiper.min.css";
+@import "../../../node_modules/swiper/modules/navigation.min.css";
+@import "../../../node_modules/swiper/modules/pagination.min.css";
+
+:root {
+  --swiper-pagination-color: #3858e9;
+  --swiper-pagination-bullet-inactive-color: #b1b1b1;
+  --swiper-pagination-bullet-width: 0.5rem;
+  --swiper-pagination-bullet-height: 0.5rem;
+  --swiper-pagination-bullet-horizontal-gap: 0.2rem;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+}
+
+.gallery {
+  margin-top: -1px;
+  margin-bottom: -1px;
+  position: relative;
+  .gallery-cont {
+    padding-top: 10rem;
+  }
+  .swiper-navigation {
+    padding-top: 2rem;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    .swiper-button-disabled {
+      opacity: 0.5;
+    }
+    .swiper-next {
+      height: 70px;
+      width: auto;
+      position: absolute;
+      top: 58px;
+      left: auto;
+      right: 0;
+    }
+    .swiper-prev {
+      height: 70px;
+      width: auto;
+      position: absolute;
+      top: 7px;
+      left: 0;
+      right: auto;
+      transform: rotate(180deg);
+    }
+    .swiper-prev::after,
+    .swiper-next::after {
+      content: ">";
+      display: block;
+      width: auto;
+      height: auto;
+      color: #3858e9;
+      background: transparent;
+      font-size: 70px;
+    }
+  }
+}

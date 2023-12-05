@@ -1,0 +1,51 @@
+@use "../../../src/css/base/mixins.scss" as *;
+@use "../../../src/css/base/media-queries" as *;
+
+.wp-block-image.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.colonna .wp-block-image.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.colonna.edit .wp-block-image.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.testata .wp-block-columns > .wp-block-column:nth-of-type(2) figure.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.testata.edit
+  .block-editor-inner-blocks
+  .wp-block-columns
+  > .wp-block-column:nth-of-type(2)
+  figure.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.tre-colonne-icona .tre-colonne-icona-cont .wp-block-columns .wp-block-image.is-style-icona-piccola {
+  height: 5.5vw;
+  @include mediaQuerySmartphonesOnly {
+    height: 15vw;
+  }
+}
+.tre-colonne-icona.edit .tre-colonne-icona-cont .wp-block-columns .wp-block-image.is-style-icona-piccola {
+  & > div {
+    height: 5.5vw !important;
+    @include mediaQuerySmartphonesOnly {
+      height: 15vw;
+    }
+  }
+}

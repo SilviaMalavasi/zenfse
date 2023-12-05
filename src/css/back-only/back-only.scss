@@ -1,0 +1,52 @@
+@use "../base/mixins" as *;
+@use "../base/media-queries" as *;
+
+.wp-admin .editor-styles-wrapper {
+  --font-1pt: calc((1vh + 4vw) * 0.217 * 0.04);
+  --font-14pt: calc(var(--font-1pt) * 14);
+  --font-18pt: calc(var(--font-1pt) * 18);
+  --font-20pt: calc(var(--font-1pt) * 20);
+  --font-22pt: calc(var(--font-1pt) * 22);
+  --font-36pt: calc(var(--font-1pt) * 36);
+  --font-48pt: calc(var(--font-1pt) * 48);
+  --font-50pt: calc(var(--font-1pt) * 50);
+  --font-60pt: calc(var(--font-1pt) * 60);
+  --font-80pt: calc(var(--font-1pt) * 80);
+
+  --padding-1: 2.25vw;
+  --padding-2: calc(var(--padding-1) * 2);
+  --padding-3: calc(var(--padding-1) * 3);
+  --padding-4: calc(var(--padding-1) * 4);
+
+  @include mediaQuerySmartphonesOnly {
+    --padding-1: 2vw;
+
+    --root-font-size: 4vw;
+    --font-1pt: 4vw * 0.054;
+
+    --font-80pt: calc(var(--font-1pt) * 45);
+    --font-60pt: calc(var(--font-1pt) * 40);
+    --font-50pt: calc(var(--font-1pt) * 35);
+    --font-48pt: calc(var(--font-1pt) * 32);
+    --font-36pt: calc(var(--font-1pt) * 28);
+  }
+
+  .edit-post-visual-editor__post-title-wrapper {
+    margin-top: 0;
+  }
+  & :where(body .is-layout-flow) > * {
+    margin-block-start: 0;
+  }
+  .wp-block {
+    margin-bottom: 0;
+  }
+  h1.wp-block-post-title {
+    padding: 2rem;
+  }
+  .components-base-control {
+    margin: 1.5rem 0 2rem 0;
+    .components-input-control__container {
+      border-radius: 0.8rem;
+    }
+  }
+}
