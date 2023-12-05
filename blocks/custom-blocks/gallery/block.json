@@ -1,6 +1,6 @@
 {
   "apiVersion": 2,
-  "name": "blocks/gallery",
+  "name": "custom-blocks/gallery",
   "title": "Gallery",
   "version": "1.0.0",
   "category": "blocchi-zenfse",
