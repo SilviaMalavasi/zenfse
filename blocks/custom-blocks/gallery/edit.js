@@ -5,7 +5,7 @@ import { useEffect, useRef } from "@wordpress/element";
 import Swiper from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 
-export default function Edit({ className, clientId }) {
+export default function Edit({ attributes, setAttributes, className, clientId }) {
   const ref = useRef();
   const swiperRef = useRef();
   const blockProps = useBlockProps({ ref });
@@ -47,6 +47,7 @@ export default function Edit({ className, clientId }) {
           prevEl: swiper_prev,
         },
         slidesPerView: 1,
+        speed: 800,
         touchStartPreventDefault: false,
       });
     }
@@ -81,13 +82,12 @@ export default function Edit({ className, clientId }) {
   const rootClientId = getBlockHierarchyRootClientId(clientId);
   const blockOrder = getBlockOrder(rootClientId);
 
-  let slideCount = 0;
-
   const addSlide = () => {
-    slideCount++;
+    const newSlideCount = attributes.slideCount + 1;
+    setAttributes({ slideCount: newSlideCount });
     const slideBlock = wp.blocks.createBlock(
       "core/columns",
-      { className: `gallery-cont swiper-slide slide-${slideCount}` },
+      { className: `gallery-cont swiper-slide slide-${attributes.slideCount}` },
       [
         wp.blocks.createBlock("core/column", {}, [wp.blocks.createBlock("core/image", {})]),
         wp.blocks.createBlock("core/column", {}, [
@@ -100,11 +100,13 @@ export default function Edit({ className, clientId }) {
     insertBlock(slideBlock, blockOrder.length, rootClientId);
     swiperRef.current.update();
     setTimeout(() => {
-      swiperRef.current.slideNext();
-    }, 200);
+      swiperRef.current.slideTo(attributes.slideCount);
+    }, 300);
   };
 
   const removeSlide = () => {
+    const newSlideCount = attributes.slideCount - 1;
+    setAttributes({ slideCount: newSlideCount });
     if (swiperRef.current) {
       const activeIndex = swiperRef.current.activeIndex;
       const blockToRemove = blockOrder[activeIndex];
@@ -128,22 +130,28 @@ export default function Edit({ className, clientId }) {
         </div>
       </div>
       <div className="swiper-pagination"></div>
-      <div className="swiper-navigation">
+      <div
+        className="swiper-navigation"
+        style={{ height: attributes.slideCount === 1 ? "0" : "50px" }}
+      >
         <div className="swiper-prev"></div>
         <div className="swiper-next"></div>
       </div>
-      <Button
-        isPrimary
-        onClick={addSlide}
-      >
-        Aggiungi una Slide
-      </Button>
-      <Button
-        isDestructive
-        onClick={removeSlide}
-      >
-        Rimuovi la Slide Corrente
-      </Button>
+      <div className="button-wrapper">
+        <Button
+          isSecondary
+          onClick={addSlide}
+        >
+          Aggiungi una Slide
+        </Button>
+        <Button
+          isSecondary
+          onClick={removeSlide}
+          style={{ display: attributes.slideCount > 1 ? "inline-flex" : "none" }}
+        >
+          Rimuovi la Slide Corrente
+        </Button>
+      </div>
     </div>
   );
 }

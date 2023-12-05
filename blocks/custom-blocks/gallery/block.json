@@ -1,6 +1,6 @@
 {
   "apiVersion": 2,
-  "name": "custom-blocks/gallery",
+  "name": "blocks/gallery",
   "title": "Gallery",
   "version": "1.0.0",
   "category": "blocchi-zenfse",
@@ -13,6 +13,12 @@
   "editorStyle": "file:./index.css",
   "style": "file:./index.css",
   "viewScript": "file:./gallery.js",
+  "attributes": {
+    "slideCount": {
+      "type": "number",
+      "default": 1
+    }
+  },
   "example": {
     "innerBlocks": [
       {

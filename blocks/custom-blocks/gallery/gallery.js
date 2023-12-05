@@ -18,6 +18,7 @@ export function gallery() {
         nextEl: swiper_next,
         prevEl: swiper_prev,
       },
+      speed: 800,
       slidesPerView: 1,
     });
   });
