@@ -2,4 +2,11 @@
 @use "../base/media-queries" as *;
 
 main {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+p.ctc_cta {
+  @include font-18pt;
+  padding-bottom: 0;
 }

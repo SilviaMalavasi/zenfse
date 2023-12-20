@@ -67,6 +67,11 @@
           "slug": "blu-bianco"
         },
         {
+          "gradient": "linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 50%, #213DED 50%, #213DED 100%)",
+          "name": "Fondo bianco/bblu",
+          "slug": "bianco-blu"
+        },
+        {
           "gradient": "linear-gradient(to bottom, #F28F80 0%, #F28F80 50%, #213DED 50%, #213DED 100%)",
           "name": "Fondo rosa scuro/blu",
           "slug": "rosa-scuro-blu"
@@ -77,14 +82,14 @@
           "slug": "rosa-chiaro-bianco"
         },
         {
-          "gradient": "linear-gradient(to bottom, #F28F80 0%, #F28F80 50%, #FFFFFF 50%, #FFFFFF 100%)",
-          "name": "Fondo rosa scuro/bianco",
-          "slug": "rosa-scuro-bianco"
-        },
-        {
           "gradient": "linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 50%, #F8D5C9 50%, #F8D5C9 100%)",
           "name": "Fondo bianco/rosa chiaro",
           "slug": "bianco-rosa-chiaro"
+        },
+        {
+          "gradient": "linear-gradient(to bottom, #F28F80 0%, #F28F80 50%, #FFFFFF 50%, #FFFFFF 100%)",
+          "name": "Fondo rosa scuro/bianco",
+          "slug": "rosa-scuro-bianco"
         }
       ],
       "palette": [
@@ -146,6 +151,11 @@
           "size": "var(--font-22pt)"
         },
         {
+          "name": "30pt",
+          "slug": "30pt",
+          "size": "var(--font-30pt)"
+        },
+        {
           "name": "36pt",
           "slug": "36pt",
           "size": "var(--font-36pt)"
@@ -178,33 +188,30 @@
       ],
       "fontFamilies": [
         {
-          "name": "Comfortaa",
-          "slug": "comfortaa",
-          "fontFamily": "'Comfortaa', sans-serif",
+          "name": "Roboto",
+          "slug": "Roboto",
+          "fontFamily": "'Roboto', sans-serif",
           "fontFace": [
             {
-              "fontFamily": "Comfortaa",
+              "fontFamily": "Roboto",
               "fontWeight": "400",
               "fontStyle": "normal",
               "fontStretch": "normal",
-              "src": [
-                "file:./src/assets/fonts/Comfortaa-Regular.woff2",
-                "file:./src/assets/fonts/Comfortaa-Regular.woff"
-              ]
+              "src": ["file:./src/assets/fonts/Roboto-Regular.woff2", "file:./src/assets/fonts/Roboto-Regular.woff"]
             },
             {
-              "fontFamily": "Comfortaa",
+              "fontFamily": "Roboto",
               "fontWeight": "700",
               "fontStyle": "normal",
               "fontStretch": "normal",
-              "src": ["file:./src/assets/fonts/Comfortaa-Bold.woff2", "file:./src/assets/fonts/Comfortaa-Bold.woff"]
+              "src": ["file:./src/assets/fonts/Roboto-Bold.woff2", "file:./src/assets/fonts/Roboto-Bold.woff"]
             },
             {
-              "fontFamily": "Comfortaa",
+              "fontFamily": "Roboto",
               "fontWeight": "300",
               "fontStyle": "normal",
               "fontStretch": "normal",
-              "src": ["file:./src/assets/fonts/Comfortaa-Light.woff2", "file:./src/assets/fonts/Comfortaa-Light.woff"]
+              "src": ["file:./src/assets/fonts/Roboto-Light.woff2", "file:./src/assets/fonts/Roboto-Light.woff"]
             }
           ]
         }
@@ -216,7 +223,7 @@
       "blockGap": "var(--padding-1)"
     },
     "typography": {
-      "fontFamily": "Comfortaa",
+      "fontFamily": "Roboto",
       "fontWeight": "400",
       "lineHeight": "1.2em",
       "fontSize": "var(--root-font-size)"

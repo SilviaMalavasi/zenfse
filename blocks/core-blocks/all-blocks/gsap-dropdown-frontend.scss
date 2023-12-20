@@ -85,3 +85,8 @@
   will-change: transform;
   will-change: opacity;
 }
+.character-animation .char {
+  will-change: "transform, opacity";
+  opacity: 0;
+  transform: scale(2.2);
+}

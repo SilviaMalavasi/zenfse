@@ -57,9 +57,9 @@ add_action('admin_enqueue_scripts', 'zenfse_admin_styles');
 
 function zenfse_preload_fonts()
 {
-  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Comfortaa-Regular.woff2" as="font" type="font/woff2" crossorigin>';
-  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Comfortaa-Bold.woff2" as="font" type="font/woff2" crossorigin>';
-  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Comfortaa-Light.woff2" as="font" type="font/woff2" crossorigin>';
+  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>';
+  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>';
+  echo '<link rel="preload" href="' . get_template_directory_uri() . '/src/assets/fonts/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin>';
 }
 add_action('wp_head', 'zenfse_preload_fonts');
 
@@ -201,7 +201,7 @@ function zenfse_register_blocks()
   {
     array_unshift($categories, array(
       'slug'  => 'blocchi-zenfse',
-      'title' => 'Blocchi ZenFSE'
+      'title' => 'Blocchi Zen FSE'
     ));
     return $categories;
   };
@@ -209,7 +209,18 @@ function zenfse_register_blocks()
 
   $blocks = array(
     'navigation' => 'zenfse_render_navigation_block',
+    'footer' => '',
+    'testata' => '',
+    'due-colonne' => '',
+    'tre-colonne' => '',
+    'contenuto-colonna' => '',
+    'tre-colonne-icona' => '',
+    'quattro-colonne' => '',
+    'cta' => '',
+    'immagine-full' => '',
     'gallery' => '',
+    'gallery-con-titolo' => '',
+    'contatti' => '',
   );
 
   foreach ($blocks as $dir => $render_callback) {

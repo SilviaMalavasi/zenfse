@@ -1,12 +1,14 @@
 import $ from "jquery";
-import { mediaQueryAllMobile, rem, vw, top_pos_animations } from "../base/globals.jsx";
+import { mediaQueryAllMobile, rem, vw, top_pos_animations } from "../base/globals.js";
 
 export function gsapAnimations() {
   async function loadGsap() {
     const { gsap } = await import("gsap");
     const { ScrollTrigger } = await import("gsap/ScrollTrigger");
     const { TextPlugin } = await import("gsap/TextPlugin");
+    const { SplitText } = await import("gsap/SplitText");
 
+    gsap.registerPlugin(SplitText);
     gsap.registerPlugin(ScrollTrigger);
 
     // Fade in
@@ -326,6 +328,86 @@ export function gsapAnimations() {
       });
     }
 
+    // Characters animation
+
+    if ($(".character-animation").length) {
+      const character_animations = gsap.utils.toArray(".character-animation");
+      character_animations.forEach((character_animation) => {
+        const splittingOutput = new SplitText(character_animation, {
+          type: "chars",
+          charsClass: "char",
+        });
+
+        function shuffle(array) {
+          var currentIndex = array.length,
+            temporaryValue,
+            randomIndex;
+          while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
+
+        const shuffledChars = shuffle(splittingOutput.chars);
+
+        const character_animation_anim = gsap.timeline({ paused: true }).to(shuffledChars, {
+          duration: 0.6,
+          autoAlpha: 1,
+          scale: 1,
+          stagger: {
+            each: 0.02,
+            from: "edges",
+          },
+          ease: "power2.out",
+        });
+
+        ScrollTrigger.create({
+          trigger: character_animation,
+          start: top_pos_animations,
+          onEnter: () => character_animation_anim.play(),
+        });
+
+        ScrollTrigger.create({
+          trigger: character_animation,
+          start: "top bottom",
+          onEnterBack: () => character_animation_anim.restart(),
+          onLeaveBack: () => character_animation_anim.pause(0),
+        });
+      });
+    }
+
+    // SVG animation
+
+    if ($(".svg-animation").length) {
+      const svg_animations = gsap.utils.toArray(".svg-animation");
+      svg_animations.forEach((svg_animation) => {
+        ScrollTrigger.create({
+          trigger: svg_animation,
+          start: top_pos_animations,
+          onEnter: () => {
+            $(svg_animation).addClass("active");
+          },
+          onLeave: () => {
+            $(svg_animation).removeClass("active");
+          },
+        });
+
+        ScrollTrigger.create({
+          trigger: svg_animation,
+          start: "top bottom",
+          onEnterBack: () => {
+            $(svg_animation).addClass("active");
+          },
+          onLeaveBack: () => $(svg_animation).removeClass("active"),
+        });
+      });
+    }
+
     // GSAP Numeri
 
     gsap.registerPlugin(TextPlugin);
@@ -364,76 +446,6 @@ export function gsapAnimations() {
           start: "top bottom",
           onEnterBack: () => numeri_anim.restart(),
           onLeaveBack: () => numeri_anim.pause(0),
-        });
-      });
-    }
-
-    // Colore menu
-
-    if (
-      $(".wp-block-group.has-base-background-color").length ||
-      $(".wp-block-columns.has-base-background-color").length ||
-      $(".gradient-to-white").length ||
-      $(".gradient-from-white").length
-    ) {
-      const bianchi = gsap.utils.toArray(
-        ".wp-block-group.has-base-background-color, .wp-block-columns.has-base-background-color"
-      );
-      bianchi.forEach((bianco) => {
-        ScrollTrigger.create({
-          trigger: bianco,
-          start: "top " + 5 * rem + "px",
-          end: "bottom " + 5 * rem + "px",
-          onEnter: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeave: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
-          onEnterBack: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeaveBack: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
-        });
-      });
-
-      const rosaScuri = gsap.utils.toArray(
-        ".wp-block-group.has-rosa-scuro-background-color, .wp-block-columns.has-rosa-scuro-background-color"
-      );
-      rosaScuri.forEach((rosaScuro) => {
-        ScrollTrigger.create({
-          trigger: rosaScuro,
-          start: "top " + 5 * rem + "px",
-          end: "bottom " + 5 * rem + "px",
-          onEnter: () => $(".zenfse-header").addClass("menu-fondo-rosa-scuro"),
-          onLeave: () => $(".zenfse-header").removeClass("menu-fondo-rosa-scuro"),
-          onEnterBack: () => $(".zenfse-header").addClass("menu-fondo-rosa-scuro"),
-          onLeaveBack: () => $(".zenfse-header").removeClass("menu-fondo-rosa-scuro"),
-        });
-      });
-
-      const toBianchiGradient = gsap.utils.toArray(".gradient-to-white, .tre-colonne-cont:not(.has-background)");
-      toBianchiGradient.forEach((biancoGradient) => {
-        let triggerValue = biancoGradient;
-        if ($(biancoGradient).hasClass("tre-colonne-cont")) {
-          triggerValue = $(biancoGradient).find(".wp-block-columns");
-        }
-        ScrollTrigger.create({
-          trigger: triggerValue,
-          start: "top " + (-10 * vw + 5 * rem) + "px",
-          end: "bottom top+=" + 5 * rem + "px",
-          onEnter: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeave: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
-          onEnterBack: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeaveBack: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
-        });
-      });
-
-      const fromBianchiGradient = gsap.utils.toArray(".gradient-from-white");
-      fromBianchiGradient.forEach((biancoGradient) => {
-        let parent = $(biancoGradient).parent();
-        ScrollTrigger.create({
-          trigger: parent,
-          start: "top " + 5 * rem + "px",
-          end: "top " + (-12 * rem - 10 * vw + 5 * rem) + "px",
-          onEnter: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeave: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
-          onEnterBack: () => $(".zenfse-header").addClass("menu-fondo-bianco"),
-          onLeaveBack: () => $(".zenfse-header").removeClass("menu-fondo-bianco"),
         });
       });
     }

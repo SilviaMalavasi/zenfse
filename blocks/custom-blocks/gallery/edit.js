@@ -10,15 +10,21 @@ export default function Edit({ attributes, setAttributes, className, clientId })
   const swiperRef = useRef();
   const blockProps = useBlockProps({ ref });
 
-  const areBlocksInserted = useSelect(
+  const { blockOrder, rootClientId, areBlocksInserted } = useSelect(
     (select) => {
-      const { getBlocks, getBlockOrder } = select("core/block-editor");
+      const { getBlockOrder, getBlockHierarchyRootClientId } = select("core/block-editor");
       const blockOrder = getBlockOrder(clientId);
-      const blocks = getBlocks(clientId);
-      return blockOrder.length === blocks.length;
+      const rootClientId = getBlockHierarchyRootClientId(clientId);
+      return {
+        blockOrder,
+        rootClientId,
+        areBlocksInserted: blockOrder.length === blockOrder.length,
+      };
     },
     [clientId]
   );
+
+  const { insertBlock, removeBlock } = useDispatch("core/block-editor");
 
   useEffect(() => {
     if (
@@ -72,16 +78,6 @@ export default function Edit({ attributes, setAttributes, className, clientId })
     ],
   ];
 
-  const { getBlockOrder, getBlockHierarchyRootClientId } = useSelect((select) => {
-    return select("core/block-editor");
-  }, []);
-
-  const { insertBlock } = useDispatch("core/block-editor");
-  const { removeBlock } = useDispatch("core/block-editor");
-
-  const rootClientId = getBlockHierarchyRootClientId(clientId);
-  const blockOrder = getBlockOrder(rootClientId);
-
   const addSlide = () => {
     const newSlideCount = attributes.slideCount + 1;
     setAttributes({ slideCount: newSlideCount });
@@ -97,8 +93,10 @@ export default function Edit({ attributes, setAttributes, className, clientId })
         ]),
       ]
     );
-    insertBlock(slideBlock, blockOrder.length, rootClientId);
+    insertBlock(slideBlock, blockOrder.length, clientId);
     swiperRef.current.update();
+    swiperRef.current.slideTo(attributes.slideCount);
+
     setTimeout(() => {
       swiperRef.current.slideTo(attributes.slideCount);
     }, 300);
@@ -110,7 +108,7 @@ export default function Edit({ attributes, setAttributes, className, clientId })
     if (swiperRef.current) {
       const activeIndex = swiperRef.current.activeIndex;
       const blockToRemove = blockOrder[activeIndex];
-      removeBlock(blockToRemove);
+      removeBlock(blockToRemove, rootClientId);
       swiperRef.current.update();
     }
   };

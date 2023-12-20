@@ -3,6 +3,9 @@
 
 .wp-block-image.is-style-icona-piccola {
   height: 5.5vw;
+  & > .components-resizable-box__container {
+    height: 5.5vw !important;
+  }
   @include mediaQuerySmartphonesOnly {
     height: 15vw;
   }

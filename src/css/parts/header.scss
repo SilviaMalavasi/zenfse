@@ -25,7 +25,7 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  padding: 3rem var(--padding-1) 0 var(--padding-1);
+  padding: 2rem var(--padding-1) 0 var(--padding-1);
   transition: all 0.5s var(--easing);
   @include mediaQuerySmartphonesOnly {
     padding: 2rem var(--padding-4) 0 var(--padding-4);
@@ -62,10 +62,17 @@
       ul {
         li {
           background-color: var(--wp--preset--color--rosa-chiaro);
-          color: var(--wp--preset--color--base);
+          color: var(--wp--preset--color--blu);
           @include hover {
             background-color: var(--wp--preset--color--blu);
             color: var(--wp--preset--color--base);
+          }
+          &:last-of-type {
+            background-color: var(--wp--preset--color--rosa-scuro);
+            @include hover {
+              background-color: var(--wp--preset--color--blu);
+              color: var(--wp--preset--color--base);
+            }
           }
         }
       }
@@ -80,7 +87,7 @@
     .wp-block-group > figure {
       svg {
         path {
-          fill: var(--wp--preset--color--rosa-chiaro);
+          fill: var(--wp--preset--color--rosa-scuro);
         }
       }
       @include hover {
@@ -100,13 +107,50 @@
             color: var(--wp--preset--color--blu);
             background-color: var(--wp--preset--color--base);
           }
-          &.current-menu-item {
+          &.current-menu-item,
+          &.current-menu-parent {
             background-color: var(--wp--preset--color--blu);
             color: var(--wp--preset--color--base);
           }
           @include hover {
             background-color: var(--wp--preset--color--rosa-chiaro);
             color: var(--wp--preset--color--base);
+          }
+        }
+      }
+    }
+  }
+  &.menu-fondo-rosa-chiaro {
+    #desktop-menu {
+      ul {
+        li {
+          &.current-menu-item,
+          &.current-menu-parent {
+            background-color: var(--wp--preset--color--blu);
+            color: var(--wp--preset--color--base);
+          }
+        }
+      }
+    }
+    .wp-block-group > figure {
+      svg {
+        path.ia {
+          fill: var(--wp--preset--color--verde);
+        }
+        path.pallino {
+          fill: var(--wp--preset--color--rosa-scuro);
+        }
+      }
+      @include hover {
+        svg {
+          path {
+            fill: var(--wp--preset--color--blu);
+          }
+          path.ia {
+            fill: var(--wp--preset--color--blu);
+          }
+          path.pallino {
+            fill: var(--wp--preset--color--blu);
           }
         }
       }

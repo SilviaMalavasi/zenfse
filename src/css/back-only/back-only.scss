@@ -7,6 +7,7 @@
   --font-18pt: calc(var(--font-1pt) * 18);
   --font-20pt: calc(var(--font-1pt) * 20);
   --font-22pt: calc(var(--font-1pt) * 22);
+  --font-30pt: calc(var(--font-1pt) * 30);
   --font-36pt: calc(var(--font-1pt) * 36);
   --font-48pt: calc(var(--font-1pt) * 48);
   --font-50pt: calc(var(--font-1pt) * 50);
@@ -24,13 +25,19 @@
     --root-font-size: 4vw;
     --font-1pt: 4vw * 0.054;
 
-    --font-80pt: calc(var(--font-1pt) * 45);
+    --font-14pt: calc(var(--font-1pt) * 18);
+    --font-18pt: calc(var(--font-1pt) * 22);
+    --font-36pt: calc(var(--font-1pt) * 26);
+    --font-40pt: calc(var(--font-1pt) * 35);
+    --font-48pt: calc(var(--font-1pt) * 40);
+    --font-50pt: calc(var(--font-1pt) * 40);
     --font-60pt: calc(var(--font-1pt) * 40);
-    --font-50pt: calc(var(--font-1pt) * 35);
-    --font-48pt: calc(var(--font-1pt) * 32);
-    --font-36pt: calc(var(--font-1pt) * 28);
+    --font-80pt: calc(var(--font-1pt) * 45);
   }
 
+  a {
+    color: inherit;
+  }
   .edit-post-visual-editor__post-title-wrapper {
     margin-top: 0;
   }

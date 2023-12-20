@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { mediaQueryAllMobile } from "../../../src/js/base/globals.jsx";
+import { mediaQueryAllMobile } from "../../../src/js/base/globals.js";
 
 export function mobileMenu() {
   $("#menuToggle").on("tap click", function () {
@@ -10,24 +10,24 @@ export function mobileMenu() {
       $("body").toggleClass("fixed");
     }
   });
-
-  $(document).on("tap click", function (event) {
-    if ($("#mobile-menu").hasClass("open-menu")) {
-      $(document).on("tap click", function (event) {
-        var $target = $(event.target);
-        if (
-          !$target.closest("#mobile-menu .mobile-menu-cont").length &&
-          !$target.closest(".menu-item.menu-home").length
-        ) {
-          $("#mobile-menu").toggleClass("open-menu");
-          $(".zenfse-header").toggleClass("open-menu");
-        }
-        if ($target.closest("#menuToggle").length) {
-          $("#mobile-menu").toggleClass("open-menu");
-          $(".zenfse-header").toggleClass("open-menu");
-        }
-      });
-    }
-  });
 }
 mobileMenu();
+
+window.addEventListener("scroll", menuPadding);
+function menuPadding() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (!mediaQueryAllMobile) {
+      $(".zenfse-header").css("paddingTop", "0.5rem");
+      $(".zenfse-header figure path:not(.ia, .pallino)").css("opacity", "0");
+    } else {
+      $(".zenfse-header figure path:not(.ia, .pallino)").css("opacity", "0");
+    }
+  } else {
+    if (!mediaQueryAllMobile) {
+      $(".zenfse-header").css("paddingTop", "2rem");
+      $(".zenfse-header figure path:not(.ia, .pallino)").css("opacity", "1");
+    } else {
+      $(".zenfse-header figure path:not(.ia, .pallino)").css("opacity", "1");
+    }
+  }
+}

@@ -14,6 +14,7 @@
   --font-18pt: calc(var(--font-1pt) * 18);
   --font-20pt: calc(var(--font-1pt) * 20);
   --font-22pt: calc(var(--font-1pt) * 22);
+  --font-30pt: calc(var(--font-1pt) * 30);
   --font-36pt: calc(var(--font-1pt) * 36);
   --font-40pt: calc(var(--font-1pt) * 40);
   --font-48pt: calc(var(--font-1pt) * 48);
@@ -40,6 +41,7 @@
     --root-font-size: 3vw;
     --font-1pt: 3vw * 0.054;
 
+    --font-14pt: calc(var(--font-1pt) * 18);
     --font-18pt: calc(var(--font-1pt) * 22);
     --font-36pt: calc(var(--font-1pt) * 26);
     --font-40pt: calc(var(--font-1pt) * 35);

@@ -14,10 +14,6 @@ export default function Save({ className }) {
         </div>
       </div>
       <div className="swiper-pagination"></div>
-      <div className="swiper-navigation">
-        <div className="swiper-prev"></div>
-        <div className="swiper-next"></div>
-      </div>
     </div>
   );
 }

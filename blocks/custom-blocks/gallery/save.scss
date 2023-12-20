@@ -12,16 +12,16 @@
   --swiper-pagination-bullet-horizontal-gap: 0.35rem;
   --swiper-pagination-bullet-opacity: 1;
   --swiper-pagination-bullet-inactive-opacity: 1;
-  --swiper-pagination-bottom: 2.5rem;
+  --swiper-pagination-bottom: 4.5rem;
 }
 
 .gallery {
-  margin-top: -1px;
-  margin-bottom: -1px;
   position: relative;
   .gallery-cont {
-    padding: 5rem var(--padding-4) 8rem var(--padding-4);
-    background: var(--wp--preset--color--rosa-scuro);
+    padding: 3.5rem var(--padding-4) 10rem var(--padding-4);
+    @include mediaQuerySmartphonesOnly {
+      padding-bottom: 7rem;
+    }
     .wp-block-column {
       flex: 0 0 50%;
     }

@@ -28,6 +28,11 @@
   line-height: 1.4em;
 }
 
+@mixin font-30pt {
+  font-size: var(--font-30pt);
+  line-height: 1em;
+}
+
 @mixin font-36pt {
   font-size: var(--font-36pt);
   line-height: 1.2em;

@@ -7,13 +7,15 @@
 }
 
 #desktop-menu {
-  padding-top: 1.4rem;
   @include mediaQuerySmartphonesOnly {
     display: none;
   }
   ul {
     display: flex;
     justify-content: flex-end;
+    &.sub-menu {
+      display: none;
+    }
     li {
       list-style: none;
       margin-left: 1rem;
@@ -31,11 +33,12 @@
         color: var(--wp--preset--color--base);
         background-color: var(--wp--preset--color--rosa-scuro);
         @include hover {
-          background-color: var(--wp--preset--color--blu);
-          color: var(--wp--preset--color--base);
+          background-color: var(--wp--preset--color--rosa-chiaro);
+          color: var(--wp--preset--color--blu);
         }
       }
-      &.current-menu-item {
+      &.current-menu-item,
+      &.current-menu-parent {
         background-color: var(--wp--preset--color--rosa-chiaro);
         color: var(--wp--preset--color--base);
       }
@@ -86,12 +89,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: calc(100dvh - 42rem) var(--padding-4) calc(100dvh - 47rem) var(--padding-4);
+    padding: calc(100dvh - 48rem) var(--padding-4) calc(100dvh - 48rem) var(--padding-4);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 100% 50%;
     transform: translate(0, 0) scaleX(0);
-    transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     width: 100vw;
     width: 100dvw;
     z-index: 400;
@@ -112,13 +115,17 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        &.sub-menu {
+          display: none;
+        }
         li {
           @include font-50pt;
           color: var(--wp--preset--color--base);
           list-style: none;
           line-height: 1em;
           text-align: center;
-          &.current-menu-item {
+          &.current-menu-item,
+          &.current-menu-parent {
             color: var(--wp--preset--color--rosa-chiaro);
           }
         }
@@ -145,4 +152,9 @@
       transform: none;
     }
   }
+}
+
+.fixed {
+  height: 100vh !important;
+  overflow: hidden !important;
 }

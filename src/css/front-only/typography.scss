@@ -21,59 +21,75 @@ body {
     color: inherit;
   }
   input,
-  textarea,
   input:focus,
+  textarea,
   textarea:focus,
   select,
   select:focus {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
     border: none;
-    background: gainsboro;
+    background: var(--wp--preset--color--base);
     resize: none;
     outline: none;
     appearance: none;
-    font-family: "Lato", sans-serif;
-    padding: 0.85rem 1.3rem;
+    padding: 1.6rem 1.3rem;
     width: 100%;
+    @include font-22pt;
+    color: var(--wp--preset--color--verde);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    font-family: "Roboto", sans-serif;
+    color: var(--wp--preset--color--verde);
+    @include font-22pt;
   }
   input {
     &:focus::placeholder {
       color: transparent;
     }
     &[type="submit"] {
-      width: auto;
-
-      &:focus {
-        width: auto;
+      width: 100%;
+      color: var(--wp--preset--color--base);
+      background: var(--wp--preset--color--rosa-scuro);
+      transition: all 0.3s var(--easing);
+      &:disabled {
+        background: var(--wp--preset--color--rosa-chiaro);
+      }
+      &:not(:disabled) {
+        cursor: pointer;
+        @include hover {
+          color: var(--wp--preset--color--rosa-scuro);
+          background: var(--wp--preset--color--base);
+        }
       }
     }
     &[type="checkbox"] {
       padding: 0;
-      border-radius: 0.3rem;
       border: none;
-      background: #fff;
+      background: var(--wp--preset--color--base);
       margin: 0;
-      width: 1rem;
-      height: 1rem;
+      width: 0.8rem;
+      height: 0.8rem;
       appearance: none;
       -moz-appearance: none;
       -webkit-appearance: none;
       margin-right: 0.2rem;
-      background: gainsboro;
       @include mediaQuerySmartphonesOnly {
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 1.3rem;
+        height: 1.3rem;
       }
       &:checked:after {
         content: "\2714";
-        font-size: 1rem;
-        line-height: 1rem;
+        font-size: 0.9rem;
+        line-height: 0.9rem;
         margin-left: 0.05rem;
-        color: red;
+        color: var(--wp--preset--color--rosa-scuro);
         position: absolute;
         margin-bottom: 0;
         @include mediaQuerySmartphonesOnly {
-          font-size: 1.5rem;
-          line-height: 1.8rem;
+          font-size: 1.2rem;
+          line-height: 1.2rem;
           margin-left: 0.2rem;
         }
       }
